@@ -1,11 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const outputPath = path.resolve(__dirname, '..\\dist\\pages');
+const outputPath = path.resolve(__dirname, '../dist/pages');
 const devServer = require('./dev-server');
 
 module.exports = {
-  entry: path.resolve(__dirname, '..\\src\\index.js'),
+  entry: path.resolve(__dirname, '../src/index.js'),
   output: {
     path: outputPath,
     filename: '[name].bundle.js',
