@@ -1,0 +1,19 @@
+@import "variables";
+
+@mixin breakpoint-generator($value) {
+  @media screen and (min-width: $value) {
+    @content
+  }
+}
+
+@mixin breakpoint-tablet() {
+  @include breakpoint-generator($breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin breakpoint-desktop() {
+  @include breakpoint-generator($breakpoint-desktop) {
+    @content;
+  }
+}

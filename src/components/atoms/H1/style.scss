@@ -1,3 +1,9 @@
+@import "../../../style/breakpoints";
+
 .h1 {
   color: black;
+
+  @include breakpoint-tablet() {
+    color: pink;
+  }
 }
