@@ -1,0 +1,33 @@
+.slider {
+  overflow: hidden;
+  position: relative;
+
+  &__list {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    transition: transform 0.5s ease-in-out;
+
+    li {
+      min-width: 100%;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &--left {
+      left: 20px;
+    }
+
+    &--right {
+      right: 20px;
+    }
+  }
+}

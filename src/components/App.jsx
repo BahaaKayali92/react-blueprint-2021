@@ -5,12 +5,50 @@ import {
   ACTIVE_BUNDLE_CONTRACT_SUCCESS
 } from './constants/actions';
 import Actions from './actions';
+import Header from './organisms/Header';
+import Slider from './organisms/slider';
 
 class App extends Reflux.Component {
   constructor() {
     super();
     this.state = {
       title: '',
+      nav: [
+        {
+          text: 'Über uns',
+          href: '#',
+        },
+        {
+          text: 'Unsere Services',
+          href: '#',
+        },
+        {
+          text: 'Referenzen',
+          href: '#',
+        },
+        {
+          text: 'Karriere',
+          href: '#',
+        },
+        {
+          text: 'Blog',
+          href: '#',
+        },
+      ],
+      sliderItems: [
+        {
+          url: '../assets/images/test.png',
+        },
+        {
+          url: '../assets/images/test.png',
+        },
+        {
+          url: '../assets/images/test.png',
+        },
+        {
+          url: '../assets/images/test.png',
+        },
+      ],
     };
     this.mapStoreToState(TestStore, App.onStoreChange);
   }
@@ -30,16 +68,32 @@ class App extends Reflux.Component {
   }
 
   render() {
-    const { title } = this.state;
+    const { title, nav, sliderItems } = this.state;
     return (
       <div>
-        <div className='row'>
-          <div className='col-6 col-sm-12'>
-            <H1
-              text={title}
-            />
-            <img src="../assets/images/test.png" />
-            <i className="fab fa-500px"></i>
+        <Header
+          nav={nav}
+        />
+        <div className='container-xl'>
+          <div className='row'>
+            <div className='col-12'>
+              <Slider
+                items={sliderItems}
+              />
+            </div>
+            <div className='col-6 col-sm-12'>
+              <H1
+                text={title}
+              />
+              <img src="../assets/images/test.png" />
+              <img src="../assets/images/test.png" />
+              <img src="../assets/images/test.png" /><img src="../assets/images/test.png" />
+              <img src="../assets/images/test.png" />
+              <img src="../assets/images/test.png" />
+              <img src="../assets/images/test.png" /><img src="../assets/images/test.png" />
+              <img src="../assets/images/test.png" />
+              <i className="fab fa-500px" />
+            </div>
           </div>
         </div>
       </div>
