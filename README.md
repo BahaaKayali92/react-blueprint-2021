@@ -1,5 +1,5 @@
 # react-blueprint-2021
-it is a quick Blueprint for React Development
+it is a quick Setup for React Development
 
 npm install
 # to start normal server
