@@ -3,7 +3,7 @@ const config = (settings) => {
 
   return {
     contentBase: opt.outputPath,
-    port: 9000,
+    port: 8080,
     host: 'localhost',
     https: true,
     // notify in case of errors
