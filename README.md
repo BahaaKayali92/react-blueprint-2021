@@ -1,7 +1,9 @@
 # react-blueprint-2021
-it is a quick Blueprint for React Development
+it is a quick Setup for React Development
 
-# to start
-1- npm install
+npm install
+# to start normal server
+npm run start
 
-2- npm run start
+# to start PWA 
+npm run pwa
