@@ -85,13 +85,6 @@ class App extends Reflux.Component {
               <H1
                 text={title}
               />
-              <img src="../assets/images/test.png" />
-              <img src="../assets/images/test.png" />
-              <img src="../assets/images/test.png" /><img src="../assets/images/test.png" />
-              <img src="../assets/images/test.png" />
-              <img src="../assets/images/test.png" />
-              <img src="../assets/images/test.png" /><img src="../assets/images/test.png" />
-              <img src="../assets/images/test.png" />
               <i className="fab fa-500px" />
             </div>
           </div>
