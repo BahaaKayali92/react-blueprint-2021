@@ -1,8 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const outputPath = path.resolve(__dirname, '../dist/pages');
+const outputPath = path.resolve(__dirname, '../dist');
 const devServer = require('./dev-server');
 
 module.exports = {
@@ -35,7 +36,7 @@ module.exports = {
             options: {
               configFile: '.eslintrc',
             },
-          }
+          },
         ],
       },
       {
@@ -55,11 +56,29 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              name: '[name].[ext]',
+              includePaths: [path.resolve(__dirname, '../../src/assets/webfonts')],
+              outputPath: path.resolve(__dirname, '../dist/assets/webfonts'),
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'public/index.html'
+      template: 'public/index.html',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, '../src/assets/images'), to: path.resolve(__dirname, '../dist/assets/images') },
+      ],
     }),
     new WorkboxPlugin.GenerateSW({
       // these options encourage the ServiceWorkers to get in there fast
