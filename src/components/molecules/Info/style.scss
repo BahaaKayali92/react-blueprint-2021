@@ -1,0 +1,50 @@
+@import "../../../style/variables";
+@import "../../../style/breakpoints";
+
+.info-wrapper {
+  $border-color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 20px;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $border-color;
+    margin-bottom: 20px;
+
+    span {
+      border-right: 1px solid $border-color;
+      padding: 10px;
+
+      @include breakpoint-tablet() {
+        padding: 10px 20px 10px 10px;
+      }
+    }
+
+    h3 {
+      margin: 0 0 0 20px;
+      color: $white;
+    }
+  }
+
+  &__text {
+    color: $white;
+  }
+
+  &__button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: $black;
+    color: $white;
+    border-radius: 8px;
+    width: 100%;
+    padding: 20px;
+    display: block;
+    text-align: center;
+
+    @include breakpoint-tablet() {
+      width: auto;
+      display: inline-block;
+    }
+  }
+}

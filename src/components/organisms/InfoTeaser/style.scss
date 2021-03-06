@@ -1,0 +1,11 @@
+@import "../../../style/variables";
+@import "../../../style/breakpoints";
+
+.info-teaser-wrapper {
+  background-color: $blue;
+  padding: 40px 20px;
+
+  @include breakpoint-tablet() {
+    padding: 40px 0;
+  }
+}

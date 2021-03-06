@@ -2,9 +2,10 @@ import Reflux from 'reflux';
 import TestStore from '../../stores/TestStore';
 import { ACTIVE_BUNDLE_CONTRACT_SUCCESS } from '../../constants/actions';
 import Header from '../../organisms/Header';
-import Slider from '../../organisms/slider';
-import H1 from '../../atoms/H1';
 import Actions from '../../actions';
+import Teaser from '../../organisms/Teaser';
+import InfoTeaser from '../../organisms/InfoTeaser';
+import Card from '../../molecules/card';
 
 class HomePage extends Reflux.Component {
   constructor() {
@@ -13,40 +14,121 @@ class HomePage extends Reflux.Component {
       title: '',
       nav: [
         {
-          text: 'Über uns',
+          text: 'Homepage',
+          href: '#',
+          subList: [
+            {
+              text: 'Lorem Ipsum',
+            },
+            {
+              text: 'Lorem Ipsum',
+            },
+            {
+              text: 'Lorem Ipsum',
+              subList: [
+                {
+                  text: 'lorem Ipsum 1',
+                  subList: [
+                    {
+                      text: 'lorem Ipsum 2',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              text: 'Lorem Ipsum',
+            },
+          ],
+        },
+        {
+          text: 'A Dropdown Menu',
           href: '#',
         },
         {
-          text: 'Unsere Services',
+          text: 'Two Column #1',
           href: '#',
         },
         {
-          text: 'Referenzen',
+          text: 'Two Column #2',
           href: '#',
         },
         {
-          text: 'Karriere',
-          href: '#',
-        },
-        {
-          text: 'Blog',
+          text: 'One Column',
           href: '#',
         },
       ],
-      sliderItems: [
+      teaser: {
+        image: {
+          url: 'assets/images/pic01.png',
+          alt: 'image',
+        },
+        title: 'Donec sedurna',
+        text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+        link: {
+          href: '#',
+          title: 'title',
+          text: 'Lorem Ipsum',
+        },
+      },
+      infoTeaser: [
         {
-          url: '../assets/images/test.png',
+          title: 'title',
+          text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+          link: {
+            href: '#',
+            title: 'title',
+            text: 'more Info',
+          },
         },
         {
-          url: '../assets/images/test.png',
+          title: 'title',
+          text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+          link: {
+            href: '#',
+            title: 'title',
+            text: 'more Info',
+          },
         },
         {
-          url: '../assets/images/test.png',
-        },
-        {
-          url: '../assets/images/test.png',
+          title: 'title',
+          text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+          link: {
+            href: '#',
+            title: 'title',
+            text: 'more Info',
+          },
         },
       ],
+      card1: {
+        image: {
+          url: 'assets/images/pic02.jpg',
+          alt: 'image',
+        },
+        title: 'Donec sedurna',
+        subheadline: 'Donec sedurna subheadline',
+        text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+        link: {
+          href: '#',
+          title: 'title',
+          text: 'Lorem Ipsum',
+        },
+      },
+      card2: {
+        image: {
+          url: 'assets/images/pic03.jpg',
+          alt: 'image',
+        },
+        title: 'Donec sedurna',
+        subheadline: 'Donec sedurna subheadline',
+        text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+        link: {
+          href: '#',
+          title: 'title',
+          text: 'Lorem Ipsum',
+        },
+        isVertical: true,
+      },
     };
     this.mapStoreToState(TestStore, HomePage.onStoreChange);
   }
@@ -66,25 +148,46 @@ class HomePage extends Reflux.Component {
   }
 
   render() {
-    const { title, nav, sliderItems } = this.state;
+    const { nav, teaser, infoTeaser, card1, card2 } = this.state;
 
     return (
       <div>
         <Header
           nav={nav}
         />
-        <div className='container-xl'>
+        <div>
           <div className='row'>
             <div className='col-12'>
-              <Slider
-                items={sliderItems}
+              <Teaser
+                {...teaser}
+              />
+              <InfoTeaser
+                items={infoTeaser}
               />
             </div>
-            <div className='col-6 col-sm-12'>
-              <H1
-                text={title}
-              />
-              <i className="fab fa-500px" />
+          </div>
+          <div className='container-lg'>
+            <div className='row'>
+              <div className='col-12 col-md-9'>
+                <div className='row'>
+                  <div className='col-12'>
+                    <Card
+                      {...card1}
+                    />
+                  </div>
+                  <div className='col-12'>
+                    <div className='row'>
+                      <div className='col-12 col-md-6'>
+                        <Card
+                          {...card2}
+                        />
+                      </div>
+                      <div className='col-12 col-md-6'></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className='col-12 col-md-3'></div>
             </div>
           </div>
         </div>

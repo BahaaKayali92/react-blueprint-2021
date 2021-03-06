@@ -1,6 +1,9 @@
 @import "../../../style/variables";
 @import "../../../style/breakpoints";
 
+$padding-left: 10px;
+$border-color: rgba(255, 255, 255, 0.5);
+
 .header-wrapper {
   padding: 30px 0;
   background-color: $black;
@@ -17,6 +20,22 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+
+    @include breakpoint-tablet() {
+      justify-content: space-between;
+    }
+  }
+
+  &__title {
+    color: $white;
+    font-size: 20px;
+    font-weight: normal;
+
+    @include breakpoint-tablet() {
+      font-size: 40px;
+    }
   }
 
   &__logo-link {
@@ -35,7 +54,7 @@
 
     @include breakpoint-tablet() {
       max-height: none;
-      margin: 0 0 0 20px;
+      //margin: 0 0 0 20px;
       flex-direction: row;
     }
   }
@@ -43,18 +62,48 @@
   &__link-list-item {
     color: $white;
     font-size: 16px;
-    margin-right: 16px;
+    margin-right: 0;
 
     a {
       color: inherit;
-      padding-bottom: 3px;
-      border-bottom-width: 1px;
-      border-style: solid;
-      border-color: transparent;
+      border-bottom: 1px solid $border-color;
+      padding: 10px 0 10px $padding-left;
+      display: block;
 
       &:hover {
         color: $blue;
         border-bottom-color: $blue;
+      }
+
+      @include breakpoint-tablet() {
+        border-bottom: none;
+      }
+    }
+
+    @include breakpoint-tablet() {
+      padding-right: 30px;
+      position: relative;
+
+      > .header-wrapper__sublist {
+        opacity: 0;
+        //pointer-events: none;
+        transition: opacity 0.5s ease-in-out;
+        position: absolute;
+        top: 49px;
+        background-color: $blue;
+
+        a {
+          padding: 10px !important;
+          white-space: nowrap;
+        }
+      }
+
+      > .header-wrapper__sublist:hover,
+      &:hover {
+        > .header-wrapper__sublist {
+          opacity: 1;
+          pointer-events: auto;
+        }
       }
     }
 
@@ -87,18 +136,59 @@
 
     @include breakpoint-tablet() {
       max-height: none !important;
-      order: 2;
       width: auto;
+      background-color: $blue;
+      padding: 10px 30px;
+      border-radius: 8px;
+      overflow: visible;
     }
   }
 
   &__navbar-toggle {
     margin-left: 20px;
     order: 3;
+    width: 25px;
+    height: 15px;
+    padding: 0;
+    outline: none;
+    border: none;
+    background: transparent;
+    position: absolute;
+    left: 0;
+    top: 4px;
+    cursor: pointer;
 
     @include breakpoint-tablet() {
       order: 4;
       display: none;
+    }
+  }
+
+  &__sublist {
+  }
+
+  &__sublist-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @for $i from 1 through 4 {
+    &__sublist--depth-#{$i} {
+      > a {
+        padding-left: $i * $padding-left;
+
+        @include breakpoint-tablet() {
+          padding-left: $padding-left
+        }
+      }
+    }
+  }
+
+  @for $i from 3 through 4 {
+    &__sublist--depth-#{$i} {
+      @include breakpoint-tablet() {
+        display: none;
+      }
     }
   }
 }
