@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import Reflux from 'reflux';
+import { BrowserRouter } from 'react-router-dom';
 import './style/index';
 import App from './components/App';
 
@@ -10,7 +11,12 @@ window.ReactDOM = ReactDOM;
 window.PropTypes = PropTypes;
 window.Reflux = Reflux;
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById('root')
+);
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {

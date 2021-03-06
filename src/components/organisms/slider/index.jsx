@@ -52,9 +52,9 @@ class Slider extends React.Component {
 export default Slider;
 
 Slider.propTypes = {
-  items: PropTypes.arrayOf({
+  items: PropTypes.arrayOf(PropTypes.shape({
     url: PropTypes.string.isRequired,
-  }),
+  })),
 };
 
 Slider.defaultProps = {

@@ -92,10 +92,10 @@ class Header extends React.Component {
 export default Header;
 
 Header.propTypes = {
-  nav: PropTypes.arrayOf({
+  nav: PropTypes.arrayOf(PropTypes.shape({
     text: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired,
-  }),
+  })),
 };
 
 Header.defaultProps = {
